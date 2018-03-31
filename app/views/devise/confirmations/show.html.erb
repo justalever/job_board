@@ -1,0 +1,30 @@
+<section class="section">
+  <div class="columns is-centered">
+    <div class="column is-4">
+      <%= form_for resource, :as => resource_name, :url => update_user_confirmation_path, :html => {:method => 'put'}, :id => 'activation-form' do |f| %>
+        <%= devise_error_messages! %>
+          <h4 class="subtitle is-3">Account Activation<% if resource.try(:user_name) %> for <%= resource.user_name %><% end %></h4>
+          <% if @requires_password %>
+            <div class="field">
+              <div class="control">
+                <%= f.label :password,'Choose a Password:', class:'label'%>
+                  <%= f.password_field :password, class:'input' %>
+              </div>
+            </div>
+            <div class="field">
+              <div class="control">
+                <%= f.label :password_confirmation,'Password Confirmation:', class:'label' %>
+                  <%= f.password_field :password_confirmation, class:'input'  %>
+              </div>
+            </div>
+            <% end %>
+              <%= hidden_field_tag :confirmation_token,@confirmation_token %>
+                <div class="field">
+                  <div class="control">
+                    <%= f.submit "Activate", class:'button is-warning' %>
+                  </div>
+                </div>
+      <% end %>
+    </div>
+  </div>
+</section>
