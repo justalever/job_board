@@ -1,4 +1,6 @@
-# Let's Build: With Ruby on Rails - Job Board with Stripe Payments
+![Let's Buiild With Ruby on Rails - Job Board with Payments](https://i.imgur.com/FSJ9yxp.jpg)
+
+# Let's Build: With Ruby on Rails - Job Board with Payments
 
 Welcome to what I'll be calling my tenth installment to my Let's Build: With Ruby on Rails series. In this build I'll cover how to build a filterable job board using Stripe as a payment gateway to post new jobs.
 
@@ -53,6 +55,6 @@ Each `User` will have:
   - Admin - `admin:boolean`
 
 
-Read more at [web-crunch.com ›](https://web-crunch.com)
+Read more at [web-crunch.com ›](https://web-crunch.com/lets-build-with-ruby-on-rails-job-board-with-payments/)
 
 
