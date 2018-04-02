@@ -1,0 +1,41 @@
+<% if !@job.persisted? %>
+  <h4 class="subtitle is-4">Payment</h4>
+
+  <div class="notification is-light has-text-centered">
+    <i class="fa fa-credit-card"></i>
+    All jobs cost <strong>$300</strong> USD for 30 days.
+    <span class="block mb4"></span>
+  </div>
+
+  <div class="form-row">
+    <label for="card-element" class="label">
+      Enter credit or debit card
+    </label>
+
+    <div id="card-element" class="form-control">
+      <!-- a Stripe Element will be inserted here. -->
+    </div>
+    <!-- used to display Element errors -->
+    <div id="card-errors" role="alert"></div>
+  </div>
+
+  <% if current_user.stripe_id.present? %>
+    <div class="last-card bg-light pa4 border-radius-3 mt4">
+      <h5 class="is-6 title pt2">Previously used card</h5>
+      <table class="table is-narrow bg-light is-fullwidth">
+        <thead>
+          <th>Card Brand</th>
+          <th>Last 4 Digits</th>
+          <th>Expiration Month</th>
+          <th>Expiration Year</th>
+        </thead>
+        <tr>
+          <td><%= current_user.card_brand %></td>
+          <td><%= current_user.card_last4 %></td>
+          <td><%= current_user.card_exp_month %></td>
+          <td><%= current_user.card_exp_year %></td>
+        </tr>
+      </table>
+    </div>
+  <% end %>
+<% end %>

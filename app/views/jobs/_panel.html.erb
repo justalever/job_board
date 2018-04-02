@@ -1,0 +1,25 @@
+<nav class="panel">
+  <p class="text-uppercase has-text-gray pv1 f6">filter by job type</p>
+
+  <ul class="mb3 pa0">
+    <li class="pv1">
+      <%= link_to 'All', jobs_path, class: "button is-fullwidth is-dark" %>
+    </li>
+
+    <li class="pv1">
+      <%= link_to 'Full-time', jobs_path(job_type: "Full-time"), class: "button is-fullwidth is-primary" %>
+    </li>
+
+    <li class="pv1">
+      <%= link_to 'Part-time', jobs_path(job_type: "Part-time"), class: "button is-fullwidth is-link" %>
+    </li>
+
+    <li class="pv1">
+      <%= link_to 'Freelance', jobs_path(job_type: "Freelance"), class: "button is-fullwidth is-warning" %>
+    </li>
+
+    <li class="pv1">
+      <%= link_to 'Contract', jobs_path(job_type: "Contract"), class: "button is-fullwidth is-info" %>
+    </li>
+  </ul>
+</nav>

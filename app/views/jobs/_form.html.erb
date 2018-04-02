@@ -1,0 +1,100 @@
+<%= simple_form_for @job, html: { multipart: true } do |f| %>
+  <%= f.error_notification %>
+
+      <div class="field">
+        <div class="control">
+        <%= f.input :title, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, placeholder: "Frontend Developer" %>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <%= f.input :apply_url, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }  %>
+        </div>
+      </div>
+
+
+    <div class="columns">
+      <div class="field column is-4">
+        <div class="control">
+          <label class="label">Job Type:</label>
+          <div class="control has-icons-left">
+            <span class="select">
+              <%= f.input_field :job_type, collection: Job::JOB_TYPES, prompt: "Select a job type" %>
+            </span>
+            <span class="icon is-small is-left">
+              <i class="fa fa-briefcase"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+
+        <div class="field">
+          <div class="control">
+            <%= f.input :location, require: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, hint: 'Examples: "San Francisco, CA", "Seattle", "Anywhere"' %>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <label for="job[remote_ok]">
+              <%= f.input :remote_ok, required: false, input_html: { class: "checkbox"}, wrapper: false, label: false %>
+              Work can be done remotely
+            </label><i class="fa fa-wifi"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <div class="field">
+        <div class="control">
+          <%= f.input :description, required: true, input_html: { class: "textarea" }, wrapper: false, label_html: { class: "label" } %>
+        </div>
+      </div>
+
+
+    <div class="columns">
+
+      <div class="field column">
+        <div class="control">
+          <%= f.input :job_author, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, label: "Company" %>
+        </div>
+      </div>
+
+      <div class="field column">
+        <div class="control">
+          <%= f.input :url, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, label: "Company Website", placeholder: "http://company.com" %>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="columns">
+      <div class="field column is-4">
+        <div class="control">
+          <label class="label">Logo Image</label>
+          <div class="file">
+            <label class="file-label">
+              <%= f.input :avatar, as: :file, required: false, input_html: { class:"file-input job-avatar" }, label: false, wrapper: false %>
+                <span class="file-cta">
+                  <span class="file-icon"><i class="fa fa-upload"></i></span>
+                  <span class="file-label">Choose a file…</span>
+                </span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <output id="list"></output>
+      </div>
+    </div>
+
+    <hr />
+
+    <%= render 'payment' %>
+
+    <%= f.button :submit, class: "button is-primary is-large is-rounded mv4" %>
+
+<% end %>

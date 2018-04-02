@@ -1,0 +1,51 @@
+<div class="columns pt4 pb7">
+  <div class="column is-7 is-offset-1">
+
+    <p class="f7"><i class="fa fa-clock"></i> Posted <%= time_ago_in_words(@job.created_at) %> ago</p>
+    <h1 class="title is-2"><%= @job.title %></h1>
+
+    <ul class="list pb4">
+      <li class="inline-block f6 pr2"><%= job_type(@job.job_type) %></li>
+      <li class="inline-block f6 ph2"><i class="fa fa-pin"></i> <%= @job.location %></li>
+      <% if @job.remote_ok? %>
+        <li class="inline-block f6 ph2"><i class="fa fa-wifi"></i> Remote Job</li>
+      <% end %>
+    </ul>
+
+    <div class="content text-serif f4">
+      <%= @job.description.html_safe %>
+    </div>
+
+    <%= link_to 'Apply to this job', @job.apply_url, class:"button is-rounded is-large is-fullwidth is-link" %>
+
+  </div>
+
+  <div class="column is-2 is-offset-1 has-text-centered">
+
+    <% if !@job.avatar.file.nil? %>
+      <%= link_to image_tag(@job.avatar_url(:thumb), alt: @job.job_author, class: "has-text-centered"), @job.url %>
+    <% end %>
+
+    <h5 class="is-5 has-text-centered"><%= link_to @job.job_author, @job.url %></h5>
+
+    <div class="mt2 mb4">
+    <%= link_to @job.url do %>
+      <i class="fa fa-globe"></i>
+    <% end %>
+    </div>
+
+    <%= link_to 'Apply to this job', @job.apply_url, class:"button is-rounded is-fullwidth is-link" %>
+
+    <% if current_user.try(:admin) || job_author(@job) %>
+      <ul class="pv3">
+        <li class="pv1 f6">Admin controls: </li>
+        <li class="pv1 inline-block">
+          <%= link_to 'View', @job, class: 'button is-small is-link is-outlined' %></li>
+        <li class="pv1 inline-block">
+          <%= link_to 'Edit', edit_job_path(@job), class: 'button is-small is-link is-outlined' %></li>
+        <li class="pv1 inline-block">
+          <%= link_to 'Delete', @job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-small is-link is-outlined' %></li>
+      </ul>
+    <% end %>
+  </div>
+</div>
